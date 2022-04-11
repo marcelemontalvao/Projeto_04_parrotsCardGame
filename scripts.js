@@ -4,6 +4,7 @@ let i = 0;
 let j = 0;
 let contador = 0;
 let numCartas;
+let podeVirarProximaCarta = true;
 
 function embaralhar() {
   return Math.random() - 0.5;
@@ -67,7 +68,11 @@ function renderizarHTML (imagens) {
 colocarCartas();
 
 function mostrarCarta(escolhida) {
-	
+  
+  if (escolhida.querySelector(".face.referencia-verso")|| podeVirarProximaCarta === false) {
+   return ;
+  }
+
 	const frente = escolhida.querySelector(".face");
   const verso = escolhida.querySelector(".verso");
   const imagem = escolhida.querySelector("img");
@@ -77,6 +82,7 @@ function mostrarCarta(escolhida) {
   verso.classList.add("referencia-verso");
 
   vezes++; 
+
 	comparador(imagem.src)
 
   if (contador === numCartas) {
@@ -88,12 +94,12 @@ function comparador(imagem) {
 	compara.push(imagem);
 
   if (compara.length === 2) {
-		
+		podeVirarProximaCarta = false;
     if (compara[0] !== compara[1]) {
      
       setTimeout(DesvirarCarta, 1000);
+      compara = [];
     } else {
-
       while (j < 2) {
         const verso = document.querySelector(".referencia-verso");
         const frente = document.querySelector(".referencia-frente");
@@ -104,12 +110,9 @@ function comparador(imagem) {
       }
       compara = [];
       j = 0;
+      podeVirarProximaCarta = true;
     }
   }
-}
-
-function Finalizar() {
-  alert("Você venceu com " + vezes + " jogadas");
 }
 
 function DesvirarCarta() {
@@ -126,4 +129,9 @@ function DesvirarCarta() {
   }
   compara = [];
   i = 0;
+  podeVirarProximaCarta = true;
+}
+
+function Finalizar() {
+  alert("Você venceu com " + vezes + " jogadas");
 }
