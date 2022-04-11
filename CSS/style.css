@@ -1,0 +1,70 @@
+  * {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #eef9bf;
+  }
+
+  .titulo {
+    font-weight: bold;
+    font-size: 116px;
+    letter-spacing: -0.004em;
+    color: #75b79e;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    text-align: center;
+  }
+  
+  .cartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 1850px;
+    height: auto;
+    margin-left: 200px;
+  }
+
+  .maior {
+    margin-left: 64px;
+    margin-bottom: 70px;
+    width: 217px;
+    height: 266px;
+    position: relative;
+  }
+  
+  .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #99cea8;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background-color: #a7e9af;
+    background-position: center;
+    background-size: 100px;
+    background-repeat: no-repeat;
+  }
+  
+  .imagemfrente {
+  background-image: url("/assets/front.png");
+  background-size: 85%;
+
+  }
+
+  img {
+    width: 80%;
+    height: 80%;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 40px;
+  }
+  
+  @media (max-width: 600px) {
+    .cartas {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
